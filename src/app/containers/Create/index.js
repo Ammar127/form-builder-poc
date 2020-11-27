@@ -3,15 +3,28 @@ import { Wrapper, LeftMenu,Content , Button} from '../../components'
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import {ItemTypes} from "./ItemTypes";
-function selectBackgroundColor(isActive, canDrop) {
-  if (isActive) {
-    return "darkgreen";
-  } else if (canDrop) {
-    return "darkkhaki";
-  } else {
-    return "#222";
-  }
-}
+import { CheckBox, Divider, FileUploader, Input, Table, Text } from "../../elements";
+import styled from "styled-components";
+
+const ContentContainer = styled.div`
+ 
+  padding: 50px 100px;
+`;
+// function selectBackgroundColor(isActive, canDrop) {
+//   if (isActive) {
+//     return "darkgreen";
+//   } else if (canDrop) {
+//     return "darkkhaki";
+//   } else {
+//     return "#222";
+//   }
+// }
+const data = [
+  { id: 1, name: "Wasif", age: 21, email: "wasif@email.com" },
+  { id: 2, name: "Ali", age: 19, email: "ali@email.com" },
+  { id: 3, name: "Saad", age: 16, email: "saad@email.com" },
+  { id: 4, name: "Asad", age: 25, email: "asad@email.com" },
+];
 export const DragContainer = ({ allowedDropEffect }) => {
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: ItemTypes.ELEMENT,
@@ -25,17 +38,24 @@ export const DragContainer = ({ allowedDropEffect }) => {
     }),
   });
   const isActive = canDrop && isOver;
-  const backgroundColor = selectBackgroundColor(isActive, canDrop);
+  // const backgroundColor = selectBackgroundColor(isActive, canDrop);
   return (
-    <div
+    <ContentContainer
       ref={drop}
-      style={{ height: "100%", width: "100%", backgroundColor }}
+      // style={{  backgroundColor }}
     >
-      {`Works with ${allowedDropEffect} drop effect`}
-      <br />
-      <br />
-      {isActive ? "Release to drop" : "Drag a box here"}
-    </div>
+      <Input
+        label="Input Label"
+        name="inp"
+        type="text"
+        placeholder="text input"
+      />
+      <CheckBox label="Helo here" />
+      <Divider />
+      <FileUploader></FileUploader>
+      <Text />
+      <Table rows={data} />
+    </ContentContainer>
   );
 };
 export const DragElement =   ({name}) =>  {
