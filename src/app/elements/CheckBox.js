@@ -5,11 +5,11 @@ const Label = styled.label`
   margin-top: 20px;
 `;
 
-export default function CheckBox({label}) {
-    return (
-      <Label>
-        <input type="checkbox" />
-        {label}
-      </Label>
-    );
+export default function CheckBox({ label = "Helo here" }) {
+  return (
+    <Label>
+      <input type="checkbox" />
+      {label}
+    </Label>
+  );
 }

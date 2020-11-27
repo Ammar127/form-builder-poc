@@ -13,7 +13,10 @@ const InputElement = styled.input`
 border-radius: 15px;
 
 `;
-export const Input = ({ label, name, type ,placeholder, ...props }) => {
+export const Input = ({   label="Input Label",
+        name="inp",
+        type="text",
+        placeholder="text input", ...props }) => {
   return (
     <div className="form-group">
       <label>{label}</label>

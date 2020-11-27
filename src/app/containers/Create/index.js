@@ -25,6 +25,20 @@ const data = [
   { id: 3, name: "Saad", age: 16, email: "saad@email.com" },
   { id: 4, name: "Asad", age: 25, email: "asad@email.com" },
 ];
+
+export const DroppedElement = ({type, ...props}) => {
+  return (
+    <>
+       { type === 1 &&  <Table rows={data} /> }
+      { type === 2 && <Input />}
+       { type === 3 &&  <CheckBox /> }
+       { type === 4 &&  <FileUploader></FileUploader> }
+       { type === 5 &&  <Text /> }
+       { type === 6 &&  <Divider /> }
+    </>
+  );
+}
+export let droppedElement = [];
 export const DragContainer = ({ allowedDropEffect }) => {
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: ItemTypes.ELEMENT,
@@ -44,21 +58,18 @@ export const DragContainer = ({ allowedDropEffect }) => {
       ref={drop}
       // style={{  backgroundColor }}
     >
-      <Input
-        label="Input Label"
-        name="inp"
-        type="text"
-        placeholder="text input"
-      />
-      <CheckBox label="Helo here" />
-      <Divider />
-      <FileUploader></FileUploader>
-      <Text />
-      <Table rows={data} />
+      {droppedElement.map((obj, index) => {
+               return (
+                 <>
+                
+                   <DroppedElement type={obj}></DroppedElement>
+                 </>
+               );
+             })}
     </ContentContainer>
   );
 };
-export const DragElement =   ({name}) =>  {
+export const DragElement =   ({name, type}) =>  {
  
     const [{ opacity }, drag] = useDrag({
       item: { type: ItemTypes.ELEMENT },
@@ -66,6 +77,8 @@ export const DragElement =   ({name}) =>  {
         const dropResult = monitor.getDropResult();
         if (item && dropResult) {
           alert(name);
+          droppedElement.push(type);
+          console.log("droppedElement", droppedElement);
           // open modal here and take the specifications
           // add in array
         }
@@ -92,26 +105,26 @@ export default function Create() {
               <h3>Cell Layout</h3>
               <ul className="myUl">
                 <li>
-                  <DragElement name="Table">Table</DragElement>
+                  <DragElement name="Table" type={1}>Table</DragElement>
                 </li>
               </ul>
               <h3>Form Components</h3>
 
               <ul className="myUl">
                 <li>
-                  <DragElement name="Input"></DragElement>
+                  <DragElement name="Input" type={2}></DragElement>
                 </li>
                 <li>
-                  <DragElement name="Checkbox"></DragElement>
+                  <DragElement name="Checkbox" type={3}></DragElement>
                 </li>
                 <li>
-                  <DragElement name="File uploader"></DragElement>
+                  <DragElement name="File uploader" type={4}></DragElement>
                 </li>
                 <li>
-                  <DragElement name="Text"> </DragElement>
+                  <DragElement name="Text" type={5}> </DragElement>
                 </li>
                 <li>
-                  <DragElement name="Divider"></DragElement>
+                  <DragElement name="Divider" type={6}></DragElement>
                 </li>
               </ul>
             </div>
