@@ -1,4 +1,4 @@
-import { ADD_FORM, UPDATE_FORM, DELETE_FORM, RESET_FORM } from "./actionTypes";
+import { ADD_FORM, UPDATE_FORM, DELETE_FORM, RESET_FORM } from "../constants/actionTypes";
 
 
 const initialState = {

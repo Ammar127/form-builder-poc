@@ -5,7 +5,7 @@ Home} from './app/containers';
 
 function App() {
   return (
-
+  
       <Switch>
         <Route path="/create">
           <Create />
@@ -17,7 +17,7 @@ function App() {
           <Home />
         </Route>
       </Switch>
-
+ 
   );
 }
 
