@@ -74,14 +74,14 @@ const ValidateButton = styled.button`
   }
 `;
 
-export const DragElement = ({name, ...props}) => {
+export const DragElement = ({name, type, ...props}) => {
   const [{ opacity }, drag] = useDrag({
     item: { type: ItemTypes.ELEMENT },
     end(item, monitor) {
       const dropResult = monitor.getDropResult();
       if (item && dropResult) {
         alert(name);
-        
+        props.onAdd(1, type);
         // open modal here and take the specifications
         // add in array
       }
@@ -110,25 +110,25 @@ export const LeftNav = (props) => {
         <h3>Cell Layout</h3>
         <Ul>
           <li>
-            <DragElement {...props} name="Table"></DragElement>
+            <DragElement {...props} type={1} name="Table"></DragElement>
           </li>
         </Ul>
         <h3>Form Components</h3>
         <Ul>
           <li>
-            <DragElement {...props} name="Input"></DragElement>
+            <DragElement {...props} type={2} name="Input"></DragElement>
           </li>
           <li>
-            <DragElement {...props} name="Checkbox"></DragElement>
+            <DragElement {...props} type={3} name="Checkbox"></DragElement>
           </li>
           <li>
-            <DragElement {...props} name="File uploader"></DragElement>
+            <DragElement {...props} type={4} name="File uploader"></DragElement>
           </li>
           <li>
-            <DragElement {...props} name="Text"></DragElement>
+            <DragElement {...props} type={5} name="Text"></DragElement>
           </li>
           <li>
-            <DragElement {...props} name="Divider"></DragElement>
+            <DragElement {...props} type={6} name="Divider"></DragElement>
           </li>
           <li></li>
         </Ul>
