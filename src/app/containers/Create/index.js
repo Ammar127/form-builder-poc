@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { ADD_FORM, UPDATE_FORM, DELETE_FORM, RESET_FORM } from "../../constants/actionTypes";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+
 import {LeftNav} from './LeftNav';
 import {Content} from './Content'
 import styled from "styled-components";
@@ -13,13 +12,18 @@ const Container = styled.div`
   height: 100%;
 `;
 export const Create = (props) => {
+  const handleDrop = (index, item) => {
+    // open modal here and take the specifications
+    // add in array
+    // save here in the location
+    // also here check that new or update
+    console.log("index, item => on Drop", index, item);
+  };
   return (
-    <DndProvider backend={HTML5Backend}>
       <Container>
         <LeftNav {...props} />
-        <Content {...props} />
+        <Content {...props} onDrop={handleDrop} />
       </Container>
-    </DndProvider>
   );
   
 }

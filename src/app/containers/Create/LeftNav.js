@@ -15,16 +15,21 @@ const Nav = styled.div`
   padding: 1rem 0 0 0;
   justify-content: flex-start;
   color: white;
+  position: fixed;
+  width: 20%;
 `;
 const Ul = styled.ul`
   list-style-type: none;
   padding: 0;
   margin: 0;
 `;
+const Li = styled.li`
+  padding: 5px 25px;
+`;
 const DashedButton = styled.button`
   border: dashed 0.5px;
   border-radius: 25px;
-  width: 150px;
+  width: 100%;
   padding: 12px 15px;
   font-size: 16px;
   cursor: pointer;
@@ -50,7 +55,7 @@ const DashedButton = styled.button`
 const ValidateButton = styled.button`
   border: none;
   border-radius: 25px;
-  width: 150px;
+  width: 100%;
   padding: 12px 15px;
   font-size: 20px;
   cursor: pointer;
@@ -76,14 +81,13 @@ const ValidateButton = styled.button`
 
 export const DragElement = ({name, type, ...props}) => {
   const [{ opacity }, drag] = useDrag({
-    item: { type: ItemTypes.ELEMENT },
+    item: { name:name, props:props, type: ItemTypes.ELEMENT },
     end(item, monitor) {
       const dropResult = monitor.getDropResult();
       if (item && dropResult) {
-        alert(name);
+        // alert(name);
         props.onAdd(1, type);
-        // open modal here and take the specifications
-        // add in array
+       
       }
     },
     collect: (monitor) => ({
@@ -101,37 +105,39 @@ export const LeftNav = (props) => {
     return (
       <Nav>
         <Ul>
-          <li><ValidateButton>
+          <Li><ValidateButton>
           <Refresh size="25" />
           Validate
-        </ValidateButton></li>
+        </ValidateButton></Li>
         </Ul>
         
         <h3>Cell Layout</h3>
         <Ul>
-          <li>
+          <Li>
             <DragElement {...props} type={1} name="Table"></DragElement>
-          </li>
+          </Li>
         </Ul>
         <h3>Form Components</h3>
         <Ul>
-          <li>
+          <Li>
             <DragElement {...props} type={2} name="Input"></DragElement>
-          </li>
-          <li>
+          </Li>
+          <Li>
             <DragElement {...props} type={3} name="Checkbox"></DragElement>
-          </li>
-          <li>
+          </Li>
+          <Li>
             <DragElement {...props} type={4} name="File uploader"></DragElement>
-          </li>
-          <li>
+          </Li>
+          <Li>
             <DragElement {...props} type={5} name="Text"></DragElement>
-          </li>
-          <li>
+          </Li>
+          <Li>
             <DragElement {...props} type={6} name="Divider"></DragElement>
-          </li>
-          <li></li>
+          </Li>
+          <Li></Li>
         </Ul>
       </Nav>
     );
 }
+// add in the list via props
+// (create an object for the elements and open modal receive the things and add into the state so we can save this )
