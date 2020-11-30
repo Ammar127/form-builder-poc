@@ -8,18 +8,11 @@ const TextElement = styled.textarea`
   border-radius: 4px;
 
 `;
-const Label = styled.label`
-  font-size: 14px;
-  font-weight: 700;
-`;
-const Wrapper = styled.div`
-  margin-top: 20px;
-`;
+
 export const Text = ({rows = 20}) => {
     return (
-        <Wrapper>
-            <Label>Text Label here</Label>
+     
             <TextElement rows="rows"/>
-        </Wrapper>
+   
     )
 }

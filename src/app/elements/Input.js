@@ -1,16 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-const Wrapper = styled.div`
-  margin-top: 10px;
-  margin-bottom: 10px;
-`;
-const Label = styled.label`
-  font-size: 14px;
-  font-weight: 700;
-`;
+
 const InputElement = styled.input`
   padding: .5rem;
-  margin: 0.5rem 0;
+  
 
   font-family: inherit;
   width: 98%;
@@ -27,8 +20,7 @@ export const Input = ({   label="Input Label",
         type="text",
         placeholder="text input", ...props }) => {
   return (
-    <Wrapper>
-      <Label>Input label Label here</Label>
+  
       <InputElement
         name={name}
         type={type}
@@ -37,6 +29,6 @@ export const Input = ({   label="Input Label",
         onDrag={props.onDrag}
         onDrop={props.onDrop}
       />
-    </Wrapper>
+ 
   );
 }

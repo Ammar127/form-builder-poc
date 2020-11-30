@@ -26,18 +26,10 @@ const data = [
   { id: 3, name: "Saad", age: 16 },
   { id: 4, name: "Asad", age: 25 },
 ];
-const Label = styled.label`
-  font-size: 14px;
-  font-weight: 700;
-`;
-const Wrapper = styled.div`
-  margin-top: 10px;
-  margin-bottom: 10px;
-`;
+
 export const TableElement = ({rows = data}) => {
     return rows ? (
-      <Wrapper>
-        <Label>Hello</Label>
+    
         <Table>
           <Tbody>
             {rows.map((student, index) => {
@@ -52,7 +44,7 @@ export const TableElement = ({rows = data}) => {
             })}
           </Tbody>
         </Table>
-      </Wrapper>
+   
     ) : null;
 }
  

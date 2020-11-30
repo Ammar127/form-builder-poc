@@ -4,14 +4,35 @@ import { useDrop } from "react-dnd";
 import { ItemTypes } from "./ItemTypes";
 import { Field } from '../../elements/Field';
 import { Download } from "@styled-icons/boxicons-regular/Download";
+import { DragMove2 } from "@styled-icons/remix-fill/DragMove2";
+import {AddToQueue} from "@styled-icons/boxicons-regular/AddToQueue";
+import { Pencil } from "@styled-icons/boxicons-regular/Pencil";
+import { Trash } from "@styled-icons/boxicons-regular/Trash";
+const Label = styled.label`
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: block;
+`;
+const Wrapper = styled.div`
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+const IconSpan = styled.span`
+  cursor: pointer;
+  padding: 0 2px;
+`;
+
 const MoveSpan = styled.span`
+  background: #f6f6f6;
 
-background: lightgray;
-
-position: absolute;
-right: 0;
-top: -10px;
-
+  position: absolute;
+  right: -20px;
+  top: -15px;
+  padding: 5px 10px;
+  border-radius: 25px;
+  border: 1px solid lightgrey;
+  color: #717171;
 `;
 const FieldContainer = styled.div `
   position: relative;
@@ -22,6 +43,7 @@ const Main = styled.div`
   padding: 5px 100px;
   width: 100%;
   margin-left: 20%;
+  z-index:999;
 `;
 const Header = styled.div`
   color: #c1c1c1;
@@ -71,7 +93,6 @@ const OverLay = styled.hr`
 const FirstDiv = styled.div`
   padding: 5px;
 `;
-
 export const DnDElement = ({e, index, ...props}) => {
  const [{ canDrop, isOver }, drop] = useDrop({
    accept: ItemTypes.ELEMENT,
@@ -84,15 +105,23 @@ export const DnDElement = ({e, index, ...props}) => {
    }),
  });
  return (
-   <FieldContainer ref={drop}>
-
-     {/* <MoveSpan>Hello</MoveSpan> */}
-     <Field key={index} type={e} {...props}></Field>
-
+   <div ref={drop}>
+     <Wrapper>
+       <Label>Hello label here</Label>
+       <FieldContainer>
+         <MoveSpan>
+          <IconSpan> <DragMove2 size={20} /> </IconSpan>
+          <IconSpan> <AddToQueue size={20} /></IconSpan>
+          <IconSpan> <Pencil size={20} /></IconSpan>
+          <IconSpan> <Trash size={20} /></IconSpan>
+         </MoveSpan>
+         <Field key={index} type={e} {...props}></Field>
+       </FieldContainer>
+     </Wrapper>
      {/* // over lay here */}
      {isOver && canDrop && <OverLay />}
      {/* // and set this to be draggable too // delete and update */}
-   </FieldContainer>
+   </div>
  );
 }
 export const FirstDrop = (props) => {
