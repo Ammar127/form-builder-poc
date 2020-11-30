@@ -1,29 +1,46 @@
-import React from 'react'
+import React, { useState } from "react";
 import { connect } from 'react-redux'
 import { ADD_FORM, UPDATE_FORM, DELETE_FORM, RESET_FORM } from "../../constants/actionTypes";
 
 import {LeftNav} from './LeftNav';
 import {Content} from './Content'
-import styled from "styled-components";
-const Container = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  height: 100%;
-`;
+import {
+  Container,
+} from "./styled.js";
+import {ElementSpecs} from '../../elements/elementSpecs'
 export const Create = (props) => {
-  const handleDrop = (index, item) => {
-    // open modal here and take the specifications
-    // add in array
-    // save here in the location
-    // also here check that new or update
-    console.log("index, item => on Drop", index, item);
+  const handleDrop = ({ elementName, elementType, index , isEdit = false}) => {
+    
+    console.log("in handle drop", { elementName, elementType, isEdit, index });
+    SetItem({ elementName, elementType, isEdit, index });
+    toggle(true);
+    // here we have the type, isEdit , index
   };
+  const [isOpen, toggle] = useState(false);
+  const [modalItem, SetItem] = useState({});
+
+  const  handlOpenModal = (open) =>  {
+    console.log("close modal");
+    toggle(open);
+  }
+  const handleSave = (item) => {
+    //here save in the array
+    toggle(false);
+  };
+
   return (
-      <Container>
-        <LeftNav {...props} />
-        <Content {...props} onDrop={handleDrop} />
-      </Container>
+    <Container>
+      <LeftNav {...props} />
+      <Content {...props} onDrop={handleDrop} />
+      {isOpen && (
+        <ElementSpecs
+          item={modalItem}
+          onModalClose={(open) => handlOpenModal(open)}
+          onSave={(item) => handleSave(item)}
+          isOpen={isOpen}
+        />
+      )}
+    </Container>
   );
   
 }
