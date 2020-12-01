@@ -35,9 +35,9 @@ export const TableElement = ({rows = data}) => {
             {rows.map((student, index) => {
               //  const { id, name, age, email } = student //destructuring
               return (
-                <Tr key={index}>
+                <Tr key={'Tr'+index}>
                   {Object.keys(student).map((obj, index) => {
-                    return <Td>{student[obj]}</Td>;
+                    return <Td key={'Td'+index}>{student[obj]}</Td>;
                   })}
                 </Tr>
               );

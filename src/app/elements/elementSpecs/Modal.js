@@ -40,7 +40,9 @@ export const ModalContent = styled.div`
     color: #5c3aff;
   }
 `;
-
+const Title = styled.h5`
+ color: blue
+`;
 const modalVariant = {
   initial: { opacity: 0 },
   isOpen: { opacity: 1 },
@@ -51,7 +53,7 @@ const containerVariant = {
   isOpen: { top: "50%" },
   exit: { top: "-50%" },
 };
-export const Modal = ({ handleClose, children, isOpen }) => {
+export const Modal = ({title,  handleClose, children, isOpen }) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -91,6 +93,7 @@ export const Modal = ({ handleClose, children, isOpen }) => {
                 strokeWidth="2"
               />
             </CloseButton>
+            <Title>{title}</Title>
             {children}
           </ModalContainer>
         </Overlay>

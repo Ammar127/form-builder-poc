@@ -13,15 +13,20 @@ import {
   ValidateButton,
 
 } from "./styled.js";
-export const DragElement = ({name, type, ...props}) => {
+export const DragElement = ({ name, isSpecsRequired, type, ...props }) => {
   const [{ opacity }, drag] = useDrag({
-    item: { elementName:name, elementType: type ,  type: ItemTypes.ELEMENT },
+    item: {
+      elementName: name,
+      elementType: type,
+      isSpecsRequired,
+      type: ItemTypes.ELEMENT,
+    },
     end(item, monitor) {
       const dropResult = monitor.getDropResult();
       // if (item && dropResult) {
       //   // alert(name);
       //   props.onAdd(1, type);
-       
+
       // }
     },
     collect: (monitor) => ({
@@ -33,7 +38,7 @@ export const DragElement = ({name, type, ...props}) => {
       <DragMove2 size="20" /> {name}
     </DashedButton>
   );
-}
+};
 
 export const LeftNav = (props) => {
     return (
@@ -48,25 +53,25 @@ export const LeftNav = (props) => {
         <h3>Cell Layout</h3>
         <Ul>
           <Li>
-            <DragElement {...props} type={1} name="Table"></DragElement>
+            <DragElement {...props} type={1}  isSpecsRequired={true} name="Table"></DragElement>
           </Li>
         </Ul>
         <h3>Form Components</h3>
         <Ul>
           <Li>
-            <DragElement {...props} type={2} name="Input"></DragElement>
+            <DragElement {...props} type={2} isSpecsRequired={true} name="Input"></DragElement>
           </Li>
           <Li>
-            <DragElement {...props} type={3} name="Checkbox"></DragElement>
+            <DragElement {...props} type={3} isSpecsRequired={true} name="Checkbox"></DragElement>
           </Li>
           <Li>
-            <DragElement {...props} type={4} name="File uploader"></DragElement>
+            <DragElement {...props} type={4} isSpecsRequired={true} name="File uploader"></DragElement>
           </Li>
           <Li>
-            <DragElement {...props} type={5} name="Text"></DragElement>
+            <DragElement {...props} type={5} isSpecsRequired={true} name="Text"></DragElement>
           </Li>
           <Li>
-            <DragElement {...props} type={6} name="Divider"></DragElement>
+            <DragElement {...props} type={6} isSpecsRequired={false} name="Divider"></DragElement>
           </Li>
           <Li></Li>
         </Ul>

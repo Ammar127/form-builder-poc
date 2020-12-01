@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-
+import React  from "react";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 const RecursiveContainer = ({ config, formik }) => {
   const builder = (individualConfig) => {
     switch (individualConfig.type) {
@@ -8,7 +8,7 @@ const RecursiveContainer = ({ config, formik }) => {
           <>
             <div>
               <label htmlFor={individualConfig.field}>
-                {individualConfig.label}
+                {individualConfig.field}
               </label>
               <input
                 type="text"
@@ -24,7 +24,7 @@ const RecursiveContainer = ({ config, formik }) => {
           <>
             <div>
               <label htmlFor={individualConfig.field}>
-                {individualConfig.label}
+                {individualConfig.field}
               </label>
               <input
                 type="number"
@@ -35,12 +35,21 @@ const RecursiveContainer = ({ config, formik }) => {
             </div>
           </>
         );
-      case "array":
+      case "checkbox":
         return (
-          <RecursiveContainer
-            config={individualConfig.children || []}
-            formik={formik}
-          />
+          <>
+            <div>
+              <input
+                type="checkbox"
+                name={individualConfig.field}
+                onChange={formik.handleChange}
+                style={{ ...individualConfig.style }}
+              />
+              <label htmlFor={individualConfig.field}>
+                {individualConfig.field}
+              </label>
+            </div>
+          </>
         );
       default:
         return <div>Unsupported field</div>;
@@ -49,7 +58,7 @@ const RecursiveContainer = ({ config, formik }) => {
 
   return (
     <>
-      {config.map((c) => {
+      {config.map((c, index) => {
         return builder(c);
       })}
     </>

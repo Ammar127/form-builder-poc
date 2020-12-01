@@ -26,8 +26,13 @@ import {
 export const DnDElement = ({ e, index, ...props }) => {
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: ItemTypes.ELEMENT,
-    drop: ({ elementName, elementType }) =>
-      props.onDrop({ elementName, elementType, index: index +1 }),
+    drop: ({ elementName, elementType, isSpecsRequired }) =>
+      props.onDrop({
+        isSpecsRequired, 
+        elementName,
+        elementType,
+        index: index + 1,
+      }),
 
     collect: (monitor) => ({
       isOver: monitor.isOver(),
@@ -57,7 +62,7 @@ export const DnDElement = ({ e, index, ...props }) => {
               <Trash size={20} />
             </IconSpan>
           </MoveSpan>
-          <Field key={index} type={e} {...props}></Field>
+          <Field key={index} type={e.elementType} {...props}></Field>
         </FieldContainer>
       </Wrapper>
       {/* // over lay here */}
@@ -70,8 +75,8 @@ export const DnDElement = ({ e, index, ...props }) => {
 export const FirstDrop = (props) => {
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: ItemTypes.ELEMENT,
-    drop: ({ elementName, elementType }) =>
-      props.onDrop({ elementName, elementType , index: 0}),
+    drop: ({  isSpecsRequired, elementName, elementType }) =>
+      props.onDrop({ isSpecsRequired,  elementName, elementType , index: 0}),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
@@ -90,7 +95,12 @@ export const Content = (props) => {
       {/* // place a Overlay here with drop */}
       <FirstDrop {...props} />
       {props.form.map((e, index) => (
-        <DnDElement e={e} index={index} {...props}></DnDElement>
+        <DnDElement
+          key={"DnDElement" + index}
+          e={e}
+          index={index}
+          {...props}
+        ></DnDElement>
       ))}
       {/* //  add one more here */}
 

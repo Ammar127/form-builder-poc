@@ -2,7 +2,7 @@ import { ADD_FORM, UPDATE_FORM, DELETE_FORM, RESET_FORM } from "../constants/act
 
 
 const initialState = {
-  form: [1, 2, 3, 4, ],
+  form: [],
   forms: []
 };
 

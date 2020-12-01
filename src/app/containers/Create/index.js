@@ -9,11 +9,19 @@ import {
 } from "./styled.js";
 import {ElementSpecs} from '../../elements/elementSpecs'
 export const Create = (props) => {
-  const handleDrop = ({ elementName, elementType, index , isEdit = false}) => {
-    
-    console.log("in handle drop", { elementName, elementType, isEdit, index });
-    SetItem({ elementName, elementType, isEdit, index });
-    toggle(true);
+  const handleDrop = ({isSpecsRequired,  elementName, elementType, index , isEdit = false}) => {
+    console.log("in handle drop", {
+      elementName,
+      elementType,
+      isEdit,
+      index,
+    });
+    if (isSpecsRequired) {
+      SetItem({ elementName, elementType, isEdit, index });
+      toggle(true);
+    } else {
+      props.onAdd(index, { elementName, elementType });
+    }
     // here we have the type, isEdit , index
   };
   const [isOpen, toggle] = useState(false);
@@ -24,7 +32,9 @@ export const Create = (props) => {
     toggle(open);
   }
   const handleSave = (item) => {
-    //here save in the array
+    // here save in the array
+    // it should { elementName, elementType , ...formValues}
+    props.onAdd(item.index, item);
     toggle(false);
   };
 

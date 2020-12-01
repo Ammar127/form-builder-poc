@@ -1,49 +1,171 @@
-// factorize the info here on the base of type
-// have a validations section for yup
-// have the input types here 
+import * as yup from "yup";
 
-
-export default [
+const specsFormTypes = [
   {
-    type: "text",
-    field: "name",
-    label: "User's name",
-    style: {
-      color: "green",
-      margin: "10px",
-    },
-  },
-  {
-    type: "number",
-    field: "number",
-    label: "User's age",
-    style: {
-      color: "green",
-      margin: "10px",
-    },
-  },
-  {
-    type: "array",
-    field: "user",
-    children: [
+    type: 1,
+    form: [
       {
         type: "text",
-        field: "user.hobbies",
-        label: "User's hobbies",
-        style: {
-          color: "green",
-          margin: "10px",
-        },
+        field: "label",
+        isRequired: true,
       },
       {
-        type: "text",
-        field: "user.os",
-        label: "User's operating system",
-        style: {
-          color: "green",
-          margin: "10px",
-        },
+        type: "number",
+        field: "rows",
+        isRequired: true,
+      },
+      {
+        type: "number",
+        field: "cols",
+        isRequired: true,
       },
     ],
-  },
+  }, //  above is  for table
+  {
+    type: 2,
+    form: [
+      {
+        type: "text",
+        field: "label",
+        isRequired: true,
+      },
+      {
+        type: "text",
+        field: "name",
+        isRequired: true,
+      },
+      {
+        type: "text",
+        field: "value",
+        isRequired: false,
+      },
+      {
+        type: "text",
+        field: "placeholder",
+        isRequired: false,
+      },
+      {
+        type: "checkbox",
+        field: "isRequired",
+        isRequired: false,
+      },
+      {
+        type: "checkbox",
+        field: "readOnly",
+        isRequired: false,
+      },
+      {
+        type: "number",
+        field: "min",
+        isRequired: false,
+      },
+      {
+        type: "number",
+        field: "max",
+        isRequired: false,
+      },
+    ],
+  }, //  above is  for input
+  {
+    type: 3,
+    form: [
+      {
+        type: "text",
+        field: "label",
+        isRequired: true,
+      },
+      {
+        type: "text",
+        field: "name",
+        isRequired: true,
+      },
+      {
+        type: "text",
+        field: "value",
+        isRequired: true,
+      },
+      {
+        type: "checkbox",
+        field: "isRequired",
+        isRequired: false,
+      },
+    ],
+  }, //  above is  fot checkbox
+  {
+    type: 4,
+    form: [
+      {
+        type: "text",
+        field: "label",
+        isRequired: true,
+      },
+      {
+        type: "text",
+        field: "name",
+        isRequired: true,
+      },
+
+      {
+        type: "checkbox",
+        field: "isRequired",
+        isRequired: false,
+      },
+      {
+        type: "checkbox",
+        field: "isMultiple",
+        isRequired: false,
+      },
+    ],
+  }, //  above is  for fileuplaoder
+  {
+    type: 5,
+    form: [
+      {
+        type: "text",
+        field: "label",
+        isRequired: true,
+      },
+      {
+        type: "text",
+        field: "name",
+        isRequired: true,
+      },
+      {
+        type: "text",
+        field: "value",
+        isRequired: false,
+      },
+      {
+        type: "text",
+        field: "placeholder",
+        isRequired: false,
+      },
+      {
+        type: "checkbox",
+        field: "isRequired",
+        isRequired: false,
+      },
+      {
+        type: "number",
+        field: "rows",
+        isRequired: true,
+      },
+      {
+        type: "number",
+        field: "cols",
+        isRequired: true,
+      },
+    ],
+  }, // above is  for Text
 ];
+export const Arr = (type) => specsFormTypes.find(e => e.type === type).form;
+export const Validations = (type) => {
+  const form = Arr(type);
+  let schema = {};
+  form.forEach(e=> {
+    if(e.isRequired) {
+      schema[e.field] = yup.string().required("This field is required");
+    } 
+  });
+  return schema;
+}
