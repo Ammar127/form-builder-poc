@@ -4,7 +4,7 @@ var express = require("express"),
   cors = require("cors"), 
   mongoose = require("mongoose");
 var isProduction = process.env.NODE_ENV === "production";
-const dbBaseUrl = "mongodb://localhost:/payload";
+const dbBaseUrl = "mongodb://localhost:/form";
 // Create global app object
 var app = express();
 var allowlist = ["http://localhost:3000", "http://localhost:5000"];

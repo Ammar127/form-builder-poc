@@ -1,3 +1,8 @@
+// factorize the info here on the base of type
+// have a validations section for yup
+// have the input types here 
+
+
 export default [
   {
     type: "text",

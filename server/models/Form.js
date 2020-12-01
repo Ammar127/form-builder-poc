@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var FormSchema = new mongoose.Schema(
   {
-    firstName: { type: String },
+    name: { type: String },
     content: []
   },
   { timestamps: true }

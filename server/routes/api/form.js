@@ -48,7 +48,7 @@ end.setHours(23, 59, 59, 999);
           console.log("Forms " + todaysFormsCount);
 
       new Form({
-        name: "Forms " + todaysFormsCount,
+        name: "Forms " + (todaysFormsCount + 1),
         content: req.body.content,
       })
         .save()
