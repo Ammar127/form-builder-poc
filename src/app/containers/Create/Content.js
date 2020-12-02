@@ -42,7 +42,7 @@ export const DnDElement = ({ e, index, ...props }) => {
   return (
     <div ref={drop}>
       <Wrapper>
-        <Label>Hello label here</Label>
+        {e && e.label && e.label !== "" && <Label>{e.label}</Label>}
         <FieldContainer>
           <MoveSpan>
             <IconSpan>
@@ -105,7 +105,7 @@ export const Content = (props) => {
       {/* //  add one more here */}
 
       <Footer>
-        <Save>
+        <Save onClick={props.onSave}>
           <Download size="25" /> <SaveSpan> Save</SaveSpan>
         </Save>
       </Footer>

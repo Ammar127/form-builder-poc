@@ -79,11 +79,11 @@ const specsFormTypes = [
         field: "name",
         isRequired: true,
       },
-      {
-        type: "text",
-        field: "value",
-        isRequired: true,
-      },
+      // {
+      //   type: "text",
+      //   field: "value",
+      //   isRequired: true,
+      // },
       {
         type: "checkbox",
         field: "isRequired",

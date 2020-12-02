@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_ROOT = "http://127.0.0.1:3000";
+const API_ROOT = "http://127.0.0.1:5000";
 
 const responseBody = (res) => res.data;
 
@@ -23,7 +23,7 @@ const requests = {
 
  
 const Form = {
-  post: (value) => requests.post("/api/form", value),
+  post: (value) => requests.post("/api/form", {content: value}),
   put: (id, value) => requests.put(`/api/form/${id}`, value),
   getAll: () => requests.get("/api/form"),
   getById: (id) => requests.get(`/api/form/${id}`),

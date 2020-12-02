@@ -3,15 +3,17 @@ import { useFormik } from "formik";
 import { Arr, Validations } from "./Arr";
 import RecursiveContainer from "./RecursiveContainer";
 import * as yup from "yup";
-export const Form = ({ item: { elementType, values = {}}}) => {
+export const Form = (props) => {
+  const { elementName, elementType, values, index } = props.item;
   const formArray = Arr(elementType);
-  console.log("formArray", formArray);
+  
   const yupSchema = yup.object(Validations(elementType));
 
   const formik = useFormik({
-    initialValues: values,
+    initialValues: values || {},
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      props.onSave({index, elementName, elementType, ...values });
     },
     validationSchema: yupSchema,
   });

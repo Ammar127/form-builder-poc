@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux'
 import { ADD_FORM, UPDATE_FORM, DELETE_FORM, RESET_FORM } from "../../constants/actionTypes";
-
+import { useHistory } from "react-router-dom";
 import {LeftNav} from './LeftNav';
 import {Content} from './Content'
 import {
   Container,
 } from "./styled.js";
 import {ElementSpecs} from '../../elements/elementSpecs'
+import { SaveForm } from "../../actions";
+
 export const Create = (props) => {
+  const history = useHistory();
   const handleDrop = ({isSpecsRequired,  elementName, elementType, index , isEdit = false}) => {
     console.log("in handle drop", {
       elementName,
@@ -34,14 +37,18 @@ export const Create = (props) => {
   const handleSave = (item) => {
     // here save in the array
     // it should { elementName, elementType , ...formValues}
+    console.log('item', item)
     props.onAdd(item.index, item);
     toggle(false);
-  };
 
+  };
+const handleSaveButtonClick = () => {
+ props.SaveForm(props.form);
+}
   return (
     <Container>
       <LeftNav {...props} />
-      <Content {...props} onDrop={handleDrop} />
+      <Content {...props} onDrop={handleDrop} onSave={handleSaveButtonClick} />
       {isOpen && (
         <ElementSpecs
           item={modalItem}
@@ -64,5 +71,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: UPDATE_FORM, index: index, obj: obj }),
   onDelete: (index) => dispatch({ type: DELETE_FORM, index: index }),
   onReset: () => dispatch({ type: RESET_FORM }),
+  SaveForm,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Create);
