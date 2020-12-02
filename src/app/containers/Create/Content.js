@@ -18,6 +18,7 @@ import {
   Header,
   Footer,
   Save,
+  Cancel,
   SaveSpan,
   OverLay,
   FirstDiv,
@@ -105,6 +106,9 @@ export const Content = (props) => {
       {/* //  add one more here */}
 
       <Footer>
+        <Cancel onClick={props.onCancel}>
+           Cancel
+        </Cancel>
         <Save onClick={props.onSave}>
           <Download size="25" /> <SaveSpan> Save</SaveSpan>
         </Save>

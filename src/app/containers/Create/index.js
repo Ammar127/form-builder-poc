@@ -53,6 +53,7 @@ export const Create = (props) => {
       <Content
         {...props}
         onDrop={handleDrop}
+        onCancel={()=> {history.push(`/home`);}}
         onSave={() => {
           props.onSave(props.form);
           history.push(`/home`);

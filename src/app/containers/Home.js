@@ -5,9 +5,9 @@ import { LOAD_FORMS, SET_FORM } from "../constants/actionTypes";
 import {Nav,
   Ul,
   Li,
-   
+   RightNav,
   Container,
-  ValidateButton } from './styled'
+  ValidateButton, FormsSpan} from './styled'
   import { useHistory } from "react-router-dom";
 export const Home = (props) => {
   const history = useHistory();
@@ -26,8 +26,12 @@ history.push(`/create`);
               </ValidateButton>
             </Li>
           </Ul>
+          <FormsSpan>Forms</FormsSpan>
           <Ul>{props.forms && props.forms.map((e) => <p>{e.name}</p>)}</Ul>
         </Nav>
+        <RightNav>
+          <Ul>{props.forms && props.forms.map((e) => <p>{e.name}</p>)}</Ul>
+        </RightNav>
       </Container>
     );
 }

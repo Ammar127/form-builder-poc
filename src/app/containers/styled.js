@@ -46,6 +46,35 @@ export const Footer = styled.div`
   margin-top: 20px;
   margin-bottom: 30px;
 `;
+;
+export const Cancel = styled.button`
+  text-align: center !important;
+  border: none;
+  border-radius: 25px;
+  width: 200px;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  background-color: lightgrey;
+  box-shadow: 0 0 4px #65acfb;
+  outline: none;
+  background-position: center;
+  transition: background 0.8s;
+  margin-top: 5px;
+  margin-right: 10px;
+  &:hover {
+    background: #65acfb radial-gradient(circle, transparent 1%, #79b2f3 1%)
+      center/15000%;
+  }
+
+  &:active {
+    background-color: #65acfb;
+    background-size: 100%;
+    transition: background 0s;
+  }
+`;
+
 export const Save = styled.button`
   border: none;
   border-radius: 25px;
@@ -169,4 +198,80 @@ export const Container = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   height: 100%;
+`;
+export const RightNav = styled.div`
+  background: #f4f4f4;
+  height: 100vh;
+  display: flex;
+  flex: 0 0 200px;
+  flex-flow: column nowrap;
+  text-align: center;
+  z-index: 30;
+  padding: 1rem 0 0 0;
+  justify-content: flex-start;
+  color: black;
+  position: fixed;
+  width: 20%;
+  margin-left: 20%;
+`;
+export const FormsSpan = styled.span`
+  text-align: left !important;
+  width: 100%;
+  font-size: 24px;
+  font-weight: 1000;
+  margin-left: 50px;
+`;
+
+export const PreviewContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  height: 100%;
+`;
+export const LeftContainer = styled.div`
+  background: #027aff;
+  height: 100vh;
+  display: flex;
+  flex: 0 0 200px;
+  flex-flow: column nowrap;
+  text-align: center;
+  z-index: 30;
+  padding: 1rem 0 0 0;
+  justify-content: flex-start;
+  color: white;
+  position: fixed;
+  width: 70%;
+`;
+export const RightContainer = styled.div`
+  background: #f4f4f4;
+  height: 100vh;
+  display: flex;
+  flex: 0 0 200px;
+  flex-flow: column nowrap;
+  text-align: center;
+  z-index: 30;
+  padding: 1rem 0 0 0;
+  justify-content: flex-start;
+  color: black;
+  position: fixed;
+  width: 30%;
+  margin-left: 70%;
+`;
+export const PreviewHeader = styled.div`
+  padding: 50px 100px;
+  background: red;
+  height: 5%;
+`;
+export const FormContainer = styled.div`
+  border: 1px solid;
+  padding: 5px: 100px
+`;
+export const Values = styled.div`
+  border: 1px solid
+`;
+export const Errors = styled.div`
+  border: 1px solid
+`;
+export const Events = styled.div`
+  border: 1px solid
 `;
