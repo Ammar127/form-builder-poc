@@ -12,7 +12,7 @@ export const Form = (props) => {
   const formik = useFormik({
     initialValues: values || {},
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      
       props.onSave({index, elementName, elementType, ...values });
     },
     validationSchema: yupSchema,

@@ -21,14 +21,7 @@ export const DragElement = ({ name, isSpecsRequired, type, ...props }) => {
       isSpecsRequired,
       type: ItemTypes.ELEMENT,
     },
-    end(item, monitor) {
-      const dropResult = monitor.getDropResult();
-      // if (item && dropResult) {
-      //   // alert(name);
-      //   props.onAdd(1, type);
-
-      // }
-    },
+     
     collect: (monitor) => ({
       opacity: monitor.isDragging() ? 0.4 : 1,
     }),

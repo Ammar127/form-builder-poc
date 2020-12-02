@@ -9,7 +9,6 @@ import {
 } from "./styled.js";
 import {ElementSpecs} from '../../elements/elementSpecs'
 import { SaveForm } from "../../actions";
-
 export const Create = (props) => {
   const history = useHistory();
   const handleDrop = ({isSpecsRequired,  elementName, elementType, index , isEdit = false}) => {
@@ -42,13 +41,11 @@ export const Create = (props) => {
     toggle(false);
 
   };
-const handleSaveButtonClick = () => {
- props.SaveForm(props.form);
-}
+
   return (
     <Container>
       <LeftNav {...props} />
-      <Content {...props} onDrop={handleDrop} onSave={handleSaveButtonClick} />
+      <Content {...props} onDrop={handleDrop} onSave={() => {props.onSave(props.form);  history.push(`/home`);}} />
       {isOpen && (
         <ElementSpecs
           item={modalItem}
@@ -71,6 +68,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: UPDATE_FORM, index: index, obj: obj }),
   onDelete: (index) => dispatch({ type: DELETE_FORM, index: index }),
   onReset: () => dispatch({ type: RESET_FORM }),
-  SaveForm,
+  onSave: (form) => dispatch(SaveForm(form)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Create);

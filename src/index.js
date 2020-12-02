@@ -5,7 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import { createLogger } from "redux-logger";
 import { BrowserRouter as Router } from "react-router-dom";
 import rootReducer from "./reducer";
 import { getAllForms } from "./app/actions";
@@ -16,7 +17,6 @@ if (process.env.NODE_ENV !== "production") {
 const store = createStore(
   rootReducer,
   applyMiddleware(...middleware),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 store.dispatch(getAllForms());
 ReactDOM.render(
