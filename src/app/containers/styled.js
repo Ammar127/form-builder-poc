@@ -138,7 +138,6 @@ export const Ul = styled.ul`
 `;
 export const Li = styled.li`
   padding: 5px 25px;
-  color: white;
 `;
 export const DashedButton = styled.button`
   border: dashed 0.5px;
@@ -199,17 +198,30 @@ export const Container = styled.div`
   justify-content: space-between;
   height: 100%;
 `;
+export const HomeLeftLi = styled.li`
+  padding: 5px 25px;
+  &:hover {
+    background: #65acfb radial-gradient(circle, transparent 1%, #79b2f3 1%)
+      center/15000%;
+  }
+
+  &:active {
+    background-color: #65acfb;
+    background-size: 100%;
+    transition: background 0s;
+  }
+`;
 export const RightNav = styled.div`
   background: #f4f4f4;
   height: 100vh;
   display: flex;
   flex: 0 0 200px;
   flex-flow: column nowrap;
-  text-align: center;
+  text-align: left;
   z-index: 30;
-  padding: 1rem 0 0 0;
+  padding: 8rem 0 0 1rem;
   justify-content: flex-start;
-  color: black;
+  color: black !important;
   position: fixed;
   width: 20%;
   margin-left: 20%;
@@ -218,8 +230,15 @@ export const FormsSpan = styled.span`
   text-align: left !important;
   width: 100%;
   font-size: 24px;
-  font-weight: 1000;
+  font-weight: 700;
   margin-left: 50px;
+  
+`;
+export const HomeSpan = styled.span`
+  font-size: 20px;
+  font-weight: 500;
+  
+  cursor: pointer;
 `;
 
 export const PreviewContainer = styled.div`
@@ -229,49 +248,115 @@ export const PreviewContainer = styled.div`
   height: 100%;
 `;
 export const LeftContainer = styled.div`
-  background: #027aff;
-  height: 100vh;
+  
+  height: 104vh;
   display: flex;
-  flex: 0 0 200px;
-  flex-flow: column nowrap;
-  text-align: center;
-  z-index: 30;
-  padding: 1rem 0 0 0;
-  justify-content: flex-start;
-  color: white;
-  position: fixed;
+  flex-flow: column;
   width: 70%;
+  padding-left: 100px;
+  padding-top: 20px;
+`;
+export const LeftFooter= styled.div`
+  
 `;
 export const RightContainer = styled.div`
-  background: #f4f4f4;
+
   height: 100vh;
   display: flex;
-  flex: 0 0 200px;
-  flex-flow: column nowrap;
-  text-align: center;
-  z-index: 30;
-  padding: 1rem 0 0 0;
-  justify-content: flex-start;
-  color: black;
-  position: fixed;
+  flex-flow: column;
   width: 30%;
-  margin-left: 70%;
+  padding: 20px;
 `;
 export const PreviewHeader = styled.div`
-  padding: 50px 100px;
-  background: red;
+  padding: 40px 100px;
+
   height: 5%;
+  color: lightgrey;
+  font-weight: 900;
+  font-size: 30px;
 `;
 export const FormContainer = styled.div`
   border: 1px solid;
-  padding: 5px: 100px
+  padding: 5px 100px;
+  overflow-y: scroll;
+  height: 400px;
+  margin: 10px 0;
 `;
 export const Values = styled.div`
-  border: 1px solid
+  border: 1px solid;
+  margin: 10px 0;
+  height: 150px;
+  overflow-y: scroll;
+
 `;
 export const Errors = styled.div`
-  border: 1px solid
+  border: 1px solid;
+  margin: 10px 0;
+  height: 90px;
+  overflow-y: scroll;
 `;
 export const Events = styled.div`
-  border: 1px solid
+  border: 1px solid;
+  margin: 10px 0;
+  height: 90px;
+  overflow-y: scroll;
+`;
+
+export const Submit = styled.button`
+  border: none;
+  border-radius: 2px;
+  width: 100px;
+  padding: 6px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  background-color: #027aff;
+  box-shadow: 0 0 4px #65acfb;
+  outline: none;
+  background-position: center;
+  transition: background 0.8s;
+  margin-top: 5px;
+  text-align: center;
+  &:hover {
+    background: #65acfb radial-gradient(circle, transparent 1%, #79b2f3 1%)
+      center/15000%;
+  }
+
+  &:active {
+    background-color: #65acfb;
+    background-size: 100%;
+    transition: background 0s;
+  }
+`;
+export const PreviewCancel = styled.button`
+  border: none;
+  border-radius: 2px;
+  width: 100px;
+  padding: 6px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  background-color: lightgrey;
+  box-shadow: 0 0 4px #65acfb;
+  outline: none;
+  background-position: center;
+  transition: background 0.8s;
+  margin-top: 5px;
+  text-align: center;
+  &:hover {
+    background: #65acfb radial-gradient(circle, transparent 1%, #79b2f3 1%)
+      center/15000%;
+  }
+
+  &:active {
+    background-color: #65acfb;
+    background-size: 100%;
+    transition: background 0s;
+  }
+`;
+
+ 
+export const Title = styled.span`
+    font-weight: 600;
+    font-size: 18px;
 `;
