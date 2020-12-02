@@ -6,7 +6,7 @@ import {LeftNav} from './LeftNav';
 import {Content} from './Content'
 import {
   Container,
-} from "./styled.js";
+} from "../styled.js";
 import {ElementSpecs} from '../../elements/elementSpecs'
 import { SaveForm } from "../../actions";
 export const Create = (props) => {
@@ -44,8 +44,20 @@ export const Create = (props) => {
 
   return (
     <Container>
-      <LeftNav {...props} />
-      <Content {...props} onDrop={handleDrop} onSave={() => {props.onSave(props.form);  history.push(`/home`);}} />
+      <LeftNav
+        {...props}
+        onValidateClick={() => {
+          history.push(`/preview`);
+        }}
+      />
+      <Content
+        {...props}
+        onDrop={handleDrop}
+        onSave={() => {
+          props.onSave(props.form);
+          history.push(`/home`);
+        }}
+      />
       {isOpen && (
         <ElementSpecs
           item={modalItem}

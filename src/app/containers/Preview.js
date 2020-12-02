@@ -1,9 +1,15 @@
 import React from 'react'
+import { connect } from "react-redux";
 
-export default function Preview() {
-    return (
-        <div>
-            Preview here
-        </div>
-    )
-}
+export const Preview = (props) => {
+  return (
+    <div>
+      <p>preview</p>
+    </div>
+  );
+};
+const mapStateToProps = ({ form }) => ({
+  form: form.form,
+});
+
+export default connect(mapStateToProps, null)(Preview);

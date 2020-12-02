@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from "styled-components";
 import {  useDrag } from "react-dnd";
 import { DragMove2 } from "@styled-icons/remix-fill/DragMove2";
 import { Refresh } from "@styled-icons/boxicons-regular/Refresh";
@@ -12,7 +11,7 @@ import {
   DashedButton,
   ValidateButton,
 
-} from "./styled.js";
+} from "../styled.js";
 export const DragElement = ({ name, isSpecsRequired, type, ...props }) => {
   const [{ opacity }, drag] = useDrag({
     item: {
@@ -37,34 +36,66 @@ export const LeftNav = (props) => {
     return (
       <Nav>
         <Ul>
-          <Li><ValidateButton>
-          <Refresh size="25" />
-          Validate
-        </ValidateButton></Li>
+          <Li>
+            <ValidateButton onClick={() => props.onValidateClick()}>
+              <Refresh size="25" />
+              Validate
+            </ValidateButton>
+          </Li>
         </Ul>
-        
+
         <h3>Cell Layout</h3>
         <Ul>
           <Li>
-            <DragElement {...props} type={1}  isSpecsRequired={true} name="Table"></DragElement>
+            <DragElement
+              {...props}
+              type={1}
+              isSpecsRequired={true}
+              name="Table"
+            ></DragElement>
           </Li>
         </Ul>
         <h3>Form Components</h3>
         <Ul>
           <Li>
-            <DragElement {...props} type={2} isSpecsRequired={true} name="Input"></DragElement>
+            <DragElement
+              {...props}
+              type={2}
+              isSpecsRequired={true}
+              name="Input"
+            ></DragElement>
           </Li>
           <Li>
-            <DragElement {...props} type={3} isSpecsRequired={true} name="Checkbox"></DragElement>
+            <DragElement
+              {...props}
+              type={3}
+              isSpecsRequired={true}
+              name="Checkbox"
+            ></DragElement>
           </Li>
           <Li>
-            <DragElement {...props} type={4} isSpecsRequired={true} name="File uploader"></DragElement>
+            <DragElement
+              {...props}
+              type={4}
+              isSpecsRequired={true}
+              name="File uploader"
+            ></DragElement>
           </Li>
           <Li>
-            <DragElement {...props} type={5} isSpecsRequired={true} name="Text"></DragElement>
+            <DragElement
+              {...props}
+              type={5}
+              isSpecsRequired={true}
+              name="Text"
+            ></DragElement>
           </Li>
           <Li>
-            <DragElement {...props} type={6} isSpecsRequired={false} name="Divider"></DragElement>
+            <DragElement
+              {...props}
+              type={6}
+              isSpecsRequired={false}
+              name="Divider"
+            ></DragElement>
           </Li>
           <Li></Li>
         </Ul>

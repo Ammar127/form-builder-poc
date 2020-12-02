@@ -109,6 +109,7 @@ export const Ul = styled.ul`
 `;
 export const Li = styled.li`
   padding: 5px 25px;
+  color: white;
 `;
 export const DashedButton = styled.button`
   border: dashed 0.5px;

@@ -1,11 +1,35 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { Plus } from "@styled-icons/boxicons-regular/Plus";
 import { LOAD_FORMS, SET_FORM } from "../constants/actionTypes";
+import {Nav,
+  Ul,
+  Li,
+   
+  Container,
+  ValidateButton } from './styled'
+  import { useHistory } from "react-router-dom";
 export const Home = (props) => {
-    
-    console.log(props)
-    return <div>{props.forms && props.forms.map(e=> <p>{e.name}</p>)}</div>;
+  const history = useHistory();
+
+  const onCreateClick = () => {
+history.push(`/create`);
+  };
+    return (
+      <Container>
+        <Nav>
+          <Ul>
+            <Li>
+              <ValidateButton onClick={onCreateClick}>
+                <Plus size="25" />
+                Create
+              </ValidateButton>
+            </Li>
+          </Ul>
+          <Ul>{props.forms && props.forms.map((e) => <p>{e.name}</p>)}</Ul>
+        </Nav>
+      </Container>
+    );
 }
 
 

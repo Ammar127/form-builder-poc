@@ -21,7 +21,7 @@ import {
   SaveSpan,
   OverLay,
   FirstDiv,
-} from "./styled.js";
+} from "../styled.js";
 
 export const DnDElement = ({ e, index, ...props }) => {
   const [{ canDrop, isOver }, drop] = useDrop({
