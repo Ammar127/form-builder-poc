@@ -5,3 +5,6 @@ export const RESET_FORM = "RESET_FORM";
 
 export const LOAD_FORMS = "LOAD_FORMS";
 export const SET_FORM = "SET_FORM";
+
+export const SET_ACTIVE_FORM = "SET_FORM";
+

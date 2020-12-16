@@ -3,7 +3,6 @@ import { Modal, ModalContent } from "./Modal";
 import {Form} from './Form';
 export const ElementSpecs = (props) => {
   const item = props.item;
-  console.log(item);
   return (
     <Modal
       title={item.elementName}

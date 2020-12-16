@@ -5,12 +5,14 @@ import {
   RESET_FORM,
   LOAD_FORMS,
   SET_FORM,
+  SET_ACTIVE_FORM,
 } from "../constants/actionTypes";
 
 
 const initialState = {
   form: [],
-  forms: []
+  forms: [],
+  activeForm: {}
 };
 
 export default (state = initialState, action) => {
@@ -52,6 +54,11 @@ export default (state = initialState, action) => {
         ...state,
         form: action.form
       }
+    case SET_ACTIVE_FORM:
+      return {
+        ...state,
+        activeForm: action.activeForm,
+      };
       default:
       return state;
   }

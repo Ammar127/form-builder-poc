@@ -12,12 +12,12 @@ import { SaveForm } from "../../actions";
 export const Create = (props) => {
   const history = useHistory();
   const handleDrop = ({isSpecsRequired,  elementName, elementType, index , isEdit = false}) => {
-    console.log("in handle drop", {
-      elementName,
-      elementType,
-      isEdit,
-      index,
-    });
+    // console.log("in handle drop", {
+    //   elementName,
+    //   elementType,
+    //   isEdit,
+    //   index,
+    // });
     if (isSpecsRequired) {
       SetItem({ elementName, elementType, isEdit, index });
       toggle(true);
@@ -30,13 +30,11 @@ export const Create = (props) => {
   const [modalItem, SetItem] = useState({});
 
   const  handlOpenModal = (open) =>  {
-    console.log("close modal");
     toggle(open);
   }
   const handleSave = (item) => {
     // here save in the array
     // it should { elementName, elementType , ...formValues}
-    console.log('item', item)
     props.onAdd(item.index, item);
     toggle(false);
 

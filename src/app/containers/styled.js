@@ -237,7 +237,6 @@ export const FormsSpan = styled.span`
 export const HomeSpan = styled.span`
   font-size: 20px;
   font-weight: 500;
-  
   cursor: pointer;
 `;
 
@@ -359,4 +358,12 @@ export const PreviewCancel = styled.button`
 export const Title = styled.span`
     font-weight: 600;
     font-size: 18px;
+`;
+
+export const HeadingUL = styled.ul`
+  padding: 0;
+  margin: 0;
+  padding-left: 2.3rem;
+  text-align: left;
+  list-style-type: none;
 `;

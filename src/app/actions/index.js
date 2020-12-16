@@ -14,7 +14,6 @@ export const getAllForms = () => (dispatch) => {
 };
  
 export const SaveForm = (form) => (dispatch) => {
-  console.log("inaction", form);
      agent.Form.post(form)
        .then((res) => {
          dispatch({

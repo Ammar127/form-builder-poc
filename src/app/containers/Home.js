@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Plus } from "@styled-icons/boxicons-regular/Plus";
-import { LOAD_FORMS, SET_FORM } from "../constants/actionTypes";
+import {
+  LOAD_FORMS,
+  SET_FORM,
+  SET_ACTIVE_FORM,
+} from "../constants/actionTypes";
 import {
   Nav,
   Ul,
@@ -12,11 +16,18 @@ import {
   FormsSpan,
   HomeSpan,
   HomeLeftLi,
+  HeadingUL,
 } from "./styled";
   import { useHistory } from "react-router-dom";
+
+import {dateGroup} from '../selector';
 export const Home = (props) => {
   const history = useHistory();
-
+  const subDates = (date) => {}
+const [activeForm, setValue] = React.useState("");
+ const onFormClick = (v) => {
+   setValue(v);
+ };
   const onCreateClick = () => {
 history.push(`/create`);
   };
@@ -32,19 +43,19 @@ history.push(`/create`);
             </Li>
           </Ul>
           <FormsSpan>Forms</FormsSpan>
-          <Ul>
+          <HeadingUL>
             {props.forms &&
-              props.forms.map((e, i) => (
-                <HomeLeftLi active={true}>
-                  <HomeSpan>{i}{e.name}</HomeSpan>
+              props.dateGroup.map((e, i) => (
+                <HomeLeftLi onClick={() => onFormClick(e)} active={true}>
+                  <HomeSpan>{e.label}</HomeSpan>
                 </HomeLeftLi>
               ))}
-          </Ul>
+          </HeadingUL>
         </Nav>
         <RightNav>
           <Ul>
-            {props.forms &&
-              props.forms.map((e) => (
+            {props.subDates &&
+              props.subDates.map((e) => (
                 <Li>
                   <HomeSpan>{e.name}</HomeSpan>
                 </Li>
@@ -58,9 +69,11 @@ history.push(`/create`);
 
 const mapStateToProps = ({ form }) => ({
   forms: form.forms,
+  dateGroup: dateGroup(form),
 });
 const mapDispatchToProps = (dispatch) => ({
   onload: (forms) => dispatch({ type: LOAD_FORMS, forms }),
   onEdit: (form) => dispatch({ type: SET_FORM, form }),
+  onSetActiveForm: (activeForm) => dispatch({type: SET_ACTIVE_FORM, activeForm})
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
